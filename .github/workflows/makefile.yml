@@ -1,0 +1,33 @@
+name: Makefile CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      
+    - name: Create virtual env
+      run: make init
+      
+    - name: Check code syntax
+      run: make lint
+      
+    - name: Build package
+      run: make build
+      
+    - name: Install package
+      run: make install
+      
+    - name: Run tests
+      run: make test
+      
+    - name: Clean environment
+      run: make clean
