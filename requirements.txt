@@ -1,1 +1,3 @@
-virtualenv
+pylint
+pytest
+pytest-html
